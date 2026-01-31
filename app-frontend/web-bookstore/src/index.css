@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: inherit;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@layer components {
+  .input {
+    @apply w-full border p-2 rounded mb-2;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-300 px-4 py-2 rounded;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white px-4 py-2 rounded;
+  }
+
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-600;
+  }
+
+  .mobile-link {
+    @apply block py-2 text-gray-700 hover:text-blue-600;
+  }
+}
