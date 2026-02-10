@@ -15,6 +15,8 @@ export const getAll = async () => {
       cover_path
     FROM
         books
+    ORDER BY
+      status ASC
   `);
 
   return rows;

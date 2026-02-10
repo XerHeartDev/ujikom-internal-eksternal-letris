@@ -14,7 +14,7 @@ import { checkAdminOrUserOwnership } from "../middlewares/ownership.js";
 const userRouter = express.Router();
 
 // Routes
-userRouter.get("/", requireRole(["admin"]), getAllUsers);
+userRouter.get("/", auth, requireRole(["admin"]), getAllUsers);
 userRouter.get(
   "/:id",
   auth,
@@ -39,9 +39,9 @@ userRouter.put(
 );
 userRouter.delete(
   "/:id",
-  auth,
-  requireRole(["admin", "user"]),
-  checkAdminOrUserOwnership,
+  // auth,
+  // requireRole(["admin", "user"]),
+  // checkAdminOrUserOwnership,
   deleteUser,
 );
 

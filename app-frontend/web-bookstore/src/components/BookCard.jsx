@@ -5,7 +5,6 @@ export default function BookCard({ book }) {
     <Link
       to={`/books/${book.id}`}
       className="
-        group
         flex
         flex-col
         justify-between

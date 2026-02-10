@@ -6,7 +6,6 @@ export default function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
 
   const [open, setOpen] = useState(false);
-
   const closeMenu = () => setOpen(false);
 
   return (
@@ -36,14 +35,20 @@ export default function Navbar() {
             {isAuthenticated ? (
               <>
                 <Link to="/account" className="nav-link">
-                  {user?.name}
+                  Account
                 </Link>
-                <button
-                  onClick={logout}
-                  className="text-red-500 hover:underline"
-                >
-                  Logout
-                </button>
+
+                <div className="flex gap-2">
+                  {isAuthenticated && user.role === "admin" && (
+                    <Link to="/admin" className="btn-primary">
+                      Admin Panel
+                    </Link>
+                  )}
+
+                  <button onClick={logout} className="btn-danger">
+                    Logout
+                  </button>
+                </div>
               </>
             ) : (
               <Link to="/login" className="btn-primary">
@@ -84,7 +89,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden bg-white border-t">
+        <div className="md:hidden bg-white border-t text-center">
           <div className="px-4 py-3 space-y-2">
             <Link to="/" onClick={closeMenu} className="mobile-link">
               Home
@@ -101,21 +106,30 @@ export default function Navbar() {
                 <Link to="/account" onClick={closeMenu} className="mobile-link">
                   Account
                 </Link>
-                <button
-                  onClick={() => {
-                    logout();
-                    closeMenu();
-                  }}
-                  className="btn-danger w-full text-left py-2"
-                >
-                  Logout
-                </button>
+
+                <div className="flex flex-col gap-2">
+                  {isAuthenticated && user.role === "admin" && (
+                    <Link to="/admin" className="btn-primary block">
+                      Admin Panel
+                    </Link>
+                  )}
+
+                  <button
+                    onClick={() => {
+                      logout();
+                      closeMenu();
+                    }}
+                    className="btn-danger"
+                  >
+                    Logout
+                  </button>
+                </div>
               </>
             ) : (
               <Link
                 to="/login"
                 onClick={closeMenu}
-                className="btn-primary block text-center"
+                className="btn-primary block"
               >
                 Login
               </Link>

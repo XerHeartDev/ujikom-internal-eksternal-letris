@@ -10,6 +10,8 @@ export const getAll = async () => {
             role
         FROM
             users
+        ORDER BY
+            role ASC
     `);
 
   return rows;
@@ -106,5 +108,5 @@ export const remove = async (id) => {
     [id],
   );
 
-  return results;
+  return rows.length ? rows[0] : null;
 };

@@ -23,7 +23,6 @@ body {
 }
 
 button {
-  border-radius: 8px;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -58,6 +57,6 @@ button:focus-visible {
   }
 
   .mobile-link {
-    @apply block py-2 text-gray-700 hover:text-blue-600;
+    @apply block px-4 py-2 text-gray-700 hover:text-blue-600;
   }
 }

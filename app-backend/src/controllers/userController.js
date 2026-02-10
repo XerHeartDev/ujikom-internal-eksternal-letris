@@ -51,15 +51,17 @@ export const createUser = async (req, res) => {
   try {
     // Initialization
     const { name, email, password } = req.body;
-    let role = "user";
-    if (req.user && req.user.role === "admin") {
-      role = req.body.role || "user";
-    }
+    const role = req.body.role || "user";
 
     // Field Validation
     if (!name || !email || !password) {
       return res.status(400).json({
         message: "Please fill the required fields",
+      });
+    }
+    if (password.length < 6) {
+      return res.status(400).json({
+        message: "Password must be at least 6 characters",
       });
     }
 
@@ -180,11 +182,12 @@ export const deleteUser = async (req, res) => {
   try {
     // Initialization
     const { id } = req.params;
+    console.log(id);
 
     // Query Execution
     const results = await User.remove(id);
 
-    if (results.affectedRows === 0) {
+    if (!results) {
       // Not Found Response
       res.status(404).json({
         message: "User not found",

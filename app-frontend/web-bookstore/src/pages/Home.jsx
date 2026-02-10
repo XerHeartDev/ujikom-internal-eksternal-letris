@@ -9,7 +9,6 @@ export default function Home() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
   const [showModal, setShowModal] = useState(false);
 
   const [title, setTitle] = useState("");
@@ -75,6 +74,7 @@ export default function Home() {
 
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-6">
+      {/* Hero Section */}
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
@@ -95,6 +95,7 @@ export default function Home() {
         )}
       </div>
 
+      {/* Book List Section */}
       {books.length === 0 ? (
         <div className="flex items-center justify-center min-h-[40vh]">
           <p className="text-gray-500 text-lg">Belum ada buku yang tersedia</p>
@@ -112,6 +113,7 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
           <div className="bg-white p-6 border-2 border-black rounded-lg w-full max-w-lg">
             <h2 className="text-xl font-semibold mb-4">Add New Book</h2>
+            
             <form
               onSubmit={handleSubmit}
               className="space-y-4 grid grid-cols-2 gap-4 items-center"

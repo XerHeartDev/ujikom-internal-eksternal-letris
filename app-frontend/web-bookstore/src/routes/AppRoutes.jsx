@@ -8,6 +8,9 @@ import Library from "../pages/Library";
 import ReadBook from "../pages/ReadBook";
 import Account from "../pages/Account";
 import MainLayout from "../layouts/MainLayout.jsx";
+import HomeAdmin from "../pages/HomeAdmin.jsx";
+import AdminLayout from "../layouts/AdminLayout.jsx";
+import Test from "../pages/Test.jsx";
 
 export default function AppRoutes() {
   return (
@@ -15,6 +18,7 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/books/:id" element={<BookDetail />} />
           <Route
             path="/library"
@@ -44,6 +48,17 @@ export default function AppRoutes() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        <Route element={<AdminLayout />}>
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <HomeAdmin />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
