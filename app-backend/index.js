@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import ".//src/cron/rentalCron.js";
 import indexRouter from "./src/router/indexRouter.js";
 import authRouter from "./src/router/authRouter.js";
 import userRouter from "./src/router/userRouter.js";
@@ -27,7 +26,4 @@ app.use("/api/rentals", rentalRouter);
 app.use("/api/payments", paymentRouter);
 app.use("/api/midtrans", midtransRouter);
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log("Server is running on port", PORT);
-});
+export default app;
