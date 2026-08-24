@@ -1,5 +1,5 @@
 import db from "../config/db.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const getAll = async () => {
   const [rows] = await db.query(`
